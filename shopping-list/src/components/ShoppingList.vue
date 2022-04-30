@@ -8,6 +8,7 @@
         :id="listItem.id"
         :shoppingItem="listItem.shoppingItem"
         @delete-shopping-item="deleteShoppingItem"
+        @update-edited-item="editShoppingItem"
       ></the-list>
     </div>
   </div>
@@ -40,6 +41,7 @@ export default {
         (item) => item.id !== ItemID
       );
     },
+    editShoppingItem() {},
   },
 };
 </script>

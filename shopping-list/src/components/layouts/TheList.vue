@@ -1,13 +1,28 @@
 <template>
   <div class="the-list">
     <div class="shopping-item">
-      <input type="checkbox" @click="toggleItemInShoppingCart" />
-      <h3 :class="isOnShoppingCart ? shoppingItemClass : ''">
+      <input
+        class="checkbox"
+        type="checkbox"
+        @click="toggleItemInShoppingCart"
+      />
+      <h3
+        :class="isOnShoppingCart ? shoppingItemClass : ''"
+        v-if="isBeingEdited === false"
+      >
         {{ shoppingItem }}
       </h3>
+      <div>
+        <input type="text" v-if="isBeingEdited === true" v-model="editedItem" />
+        <button v-if="isBeingEdited === true" @click="updateEditedItem">
+          Update
+        </button>
+      </div>
     </div>
     <div class="todo-buttons">
-      <button>Edit</button>
+      <button @click="editShoppingItem">
+        {{ isBeingEdited ? "Cancel" : "Edit" }}
+      </button>
       <button @click="deleteShoppingItem">Delete</button>
     </div>
   </div>
@@ -29,6 +44,8 @@ export default {
     return {
       isOnShoppingCart: false,
       shoppingItemClass: "crossedOut",
+      isBeingEdited: false,
+      editedItem: "",
     };
   },
   methods: {
@@ -38,6 +55,23 @@ export default {
     },
     deleteShoppingItem() {
       this.$emit("delete-shopping-item", this.id);
+    },
+    editShoppingItem() {
+      this.isBeingEdited = !this.isBeingEdited;
+    },
+    updateEditedItem() {
+      if (this.editedItem === "") {
+        alert("Don't forget to input something!");
+      } else {
+        this.$emit("update-edited-item", this.editedItem);
+      }
+      /* toggle update input */
+      if (this.isBeingEdited === true) {
+        this.isBeingEdited = false;
+      } else {
+        this.isBeingEdited = true;
+      }
+      this.editedItem = "";
     },
   },
 };
@@ -54,6 +88,7 @@ export default {
   display: flex;
   align-items: center;
 }
+
 .todo-buttons {
   display: flex;
 }
@@ -61,8 +96,9 @@ export default {
 .crossedOut {
   text-decoration: line-through;
 }
-input {
-  width: 15px;
-  height: 15px;
+
+.checkbox {
+  width: 18px;
+  height: 18px;
 }
 </style>
