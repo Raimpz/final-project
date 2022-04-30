@@ -7,6 +7,7 @@
         :key="listItem.id"
         :id="listItem.id"
         :shoppingItem="listItem.shoppingItem"
+        @delete-shopping-item="deleteShoppingItem"
       ></the-list>
     </div>
   </div>
@@ -33,6 +34,11 @@ export default {
         shoppingItem: item,
       };
       this.shoppingList.push(newItem);
+    },
+    deleteShoppingItem(ItemID) {
+      this.shoppingList = this.shoppingList.filter(
+        (item) => item.id !== ItemID
+      );
     },
   },
 };

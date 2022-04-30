@@ -8,7 +8,7 @@
     </div>
     <div class="todo-buttons">
       <button>Edit</button>
-      <button>Delete</button>
+      <button @click="deleteShoppingItem">Delete</button>
     </div>
   </div>
 </template>
@@ -35,6 +35,9 @@ export default {
     toggleItemInShoppingCart() {
       this.isOnShoppingCart = !this.isOnShoppingCart;
       console.log(this.isOnShoppingCart);
+    },
+    deleteShoppingItem() {
+      this.$emit("delete-shopping-item", this.id);
     },
   },
 };
