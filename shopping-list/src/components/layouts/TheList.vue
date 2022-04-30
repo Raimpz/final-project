@@ -1,8 +1,10 @@
 <template>
   <div class="the-list">
     <div class="shopping-item">
-      <input type="checkbox" />
-      <h3>{{ value }}</h3>
+      <input type="checkbox" @click="toggleItemInShoppingCart" />
+      <h3 :class="isOnShoppingCart ? shoppingItemClass : ''">
+        {{ shoppingItem }}
+      </h3>
     </div>
     <div class="todo-buttons">
       <button>Edit</button>
@@ -14,13 +16,25 @@
 <script>
 export default {
   props: {
-    value: {
+    shoppingItem: {
       type: String,
       required: true,
     },
     id: {
       type: String,
       required: true,
+    },
+  },
+  data() {
+    return {
+      isOnShoppingCart: false,
+      shoppingItemClass: "crossedOut",
+    };
+  },
+  methods: {
+    toggleItemInShoppingCart() {
+      this.isOnShoppingCart = !this.isOnShoppingCart;
+      console.log(this.isOnShoppingCart);
     },
   },
 };
@@ -39,5 +53,13 @@ export default {
 }
 .todo-buttons {
   display: flex;
+}
+
+.crossedOut {
+  text-decoration: line-through;
+}
+input {
+  width: 15px;
+  height: 15px;
 }
 </style>

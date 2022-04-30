@@ -6,7 +6,7 @@
         v-for="listItem in shoppingList"
         :key="listItem.id"
         :id="listItem.id"
-        :value="listItem.value"
+        :shoppingItem="listItem.shoppingItem"
       ></the-list>
     </div>
   </div>
@@ -30,7 +30,7 @@ export default {
     addNewItem(item) {
       const newItem = {
         id: new Date().toISOString(),
-        value: item,
+        shoppingItem: item,
       };
       this.shoppingList.push(newItem);
     },
