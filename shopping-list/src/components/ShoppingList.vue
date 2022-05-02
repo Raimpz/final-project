@@ -41,7 +41,10 @@ export default {
         (item) => item.id !== ItemID
       );
     },
-    editShoppingItem() {},
+    editShoppingItem(editedItem, ItemID) {
+      let oldValue = this.shoppingList.find((item) => item.id === ItemID);
+      oldValue.shoppingItem = editedItem;
+    },
   },
 };
 </script>

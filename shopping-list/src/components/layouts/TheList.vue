@@ -13,7 +13,12 @@
         {{ shoppingItem }}
       </h3>
       <div>
-        <input type="text" v-if="isBeingEdited === true" v-model="editedItem" />
+        <input
+          type="text"
+          v-if="isBeingEdited === true"
+          v-model="editedItem"
+          :placeholder="shoppingItem"
+        />
         <button v-if="isBeingEdited === true" @click="updateEditedItem">
           Update
         </button>
@@ -30,6 +35,7 @@
 
 <script>
 export default {
+  emits: ["delete-shopping-item", "update-edited-item"],
   props: {
     shoppingItem: {
       type: String,
@@ -63,7 +69,7 @@ export default {
       if (this.editedItem === "") {
         alert("Don't forget to input something!");
       } else {
-        this.$emit("update-edited-item", this.editedItem);
+        this.$emit("update-edited-item", this.editedItem, this.id);
       }
       /* toggle update input */
       if (this.isBeingEdited === true) {
