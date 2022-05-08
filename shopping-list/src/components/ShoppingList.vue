@@ -7,6 +7,7 @@
         :key="listItem.id"
         :id="listItem.id"
         :shoppingItem="listItem.shoppingItem"
+        :isOnShoppingCart="listItem.isOnShoppingCart"
         @delete-shopping-item="deleteShoppingItem"
         @update-edited-item="editShoppingItem"
       ></the-list>
@@ -17,6 +18,7 @@
 <script>
 import TheInput from "./layouts/TheInput.vue";
 import TheList from "./layouts/TheList.vue";
+import { db } from "../firebaseDb";
 
 export default {
   components: {
@@ -31,20 +33,60 @@ export default {
   methods: {
     addNewItem(item) {
       const newItem = {
-        id: new Date().toISOString(),
         shoppingItem: item,
+        isOnShoppingCart: false,
       };
-      this.shoppingList.push(newItem);
+      db.collection("shopping-list")
+        .add(newItem)
+        .then(() => {
+          // alert("Shopping Item successfully created!");
+          this.loadItems();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
     deleteShoppingItem(ItemID) {
-      this.shoppingList = this.shoppingList.filter(
-        (item) => item.id !== ItemID
-      );
+      db.collection("shopping-list")
+        .doc(ItemID)
+        .delete()
+        .then(() => {
+          console.log("Item deleted!");
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     },
     editShoppingItem(editedItem, ItemID) {
-      let oldValue = this.shoppingList.find((item) => item.id === ItemID);
-      oldValue.shoppingItem = editedItem;
+      console.log(editedItem);
+      const newItem = {
+        shoppingItem: editedItem,
+      };
+      db.collection("shopping-list")
+        .doc(ItemID)
+        .update(newItem)
+        .then(() => {
+          console.log("Item successfully updated!");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
+    loadItems() {
+      db.collection("shopping-list").onSnapshot((snapshotChange) => {
+        this.shoppingList = [];
+        snapshotChange.forEach((doc) => {
+          this.shoppingList.push({
+            id: doc.id,
+            shoppingItem: doc.data().shoppingItem,
+            isOnShoppingCart: doc.data().isOnShoppingCart,
+          });
+        });
+      });
+    },
+  },
+  mounted() {
+    this.loadItems();
   },
 };
 </script>

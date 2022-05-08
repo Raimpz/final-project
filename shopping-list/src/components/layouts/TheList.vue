@@ -4,10 +4,11 @@
       <input
         class="checkbox"
         type="checkbox"
+        :checked="isOnShoppingCart"
         @click="toggleItemInShoppingCart"
       />
       <h3
-        :class="isOnShoppingCart ? shoppingItemClass : ''"
+        :class="isOnShopCart ? shoppingItemClass : ''"
         v-if="isBeingEdited === false"
       >
         {{ shoppingItem }}
@@ -34,6 +35,8 @@
 </template>
 
 <script>
+import { db } from "../../firebaseDb";
+
 export default {
   emits: ["delete-shopping-item", "update-edited-item"],
   props: {
@@ -45,10 +48,13 @@ export default {
       type: String,
       required: true,
     },
+    isOnShoppingCart: {
+      type: Boolean,
+    },
   },
   data() {
     return {
-      isOnShoppingCart: false,
+      isOnShopCart: this.isOnShoppingCart,
       shoppingItemClass: "crossedOut",
       isBeingEdited: false,
       editedItem: "",
@@ -56,8 +62,21 @@ export default {
   },
   methods: {
     toggleItemInShoppingCart() {
-      this.isOnShoppingCart = !this.isOnShoppingCart;
+      this.isOnShopCart = !this.isOnShopCart;
+      console.log(this.id);
       console.log(this.isOnShoppingCart);
+      const newItem = {
+        isOnShoppingCart: this.isOnShopCart,
+      };
+      db.collection("shopping-list")
+        .doc(this.id)
+        .update(newItem)
+        .then(() => {
+          console.log("Item successfully updated!");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
     deleteShoppingItem() {
       this.$emit("delete-shopping-item", this.id);
