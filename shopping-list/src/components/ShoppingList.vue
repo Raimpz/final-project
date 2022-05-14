@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <article>
     <the-input @submit-item="addNewItem"></the-input>
     <div>
       <the-list
@@ -12,7 +12,7 @@
         @update-edited-item="editShoppingItem"
       ></the-list>
     </div>
-  </div>
+  </article>
 </template>
 
 <script>
@@ -90,3 +90,5 @@ export default {
   },
 };
 </script>
+
+<style scoped></style>

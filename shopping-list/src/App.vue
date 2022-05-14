@@ -1,6 +1,8 @@
 <template>
   <main>
-    <shopping-list></shopping-list>
+    <div class="container">
+      <shopping-list></shopping-list>
+    </div>
   </main>
 </template>
 
@@ -19,5 +21,16 @@ export default {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+main {
+  height: 100vh;
+  width: 100vw;
+}
+
+.container {
+  height: 100%;
+  max-width: 750px;
+  margin: 0 auto;
 }
 </style>
