@@ -27,7 +27,7 @@ export default {
 }
 
 main {
-  height: 100vh;
+  height: calc(100vh - 75px); /* miinus TheHeader.vue kõrgus */
   width: 100vw;
 }
 
