@@ -20,16 +20,16 @@
           v-model="editedItem"
           :placeholder="shoppingItem"
         />
-        <button v-if="isBeingEdited === true" @click="updateEditedItem">
+        <button class="buttonl" v-if="isBeingEdited === true" @click="updateEditedItem">
           Update
         </button>
       </div>
     </div>
     <div class="todo-buttons">
-      <button @click="editShoppingItem">
+      <button class="buttonl" @click="editShoppingItem">
         {{ isBeingEdited ? "Cancel" : "Edit" }}
       </button>
-      <button @click="deleteShoppingItem">Delete</button>
+        <button class="buttonl" @click="deleteShoppingItem">Delete</button>
     </div>
   </div>
 </template>
@@ -107,23 +107,40 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
+  border-bottom: 1px dotted lightgrey;
+    
+    }
 
 .shopping-item {
   display: flex;
   align-items: center;
-}
+  
+  }
 
 .todo-buttons {
   display: flex;
+  padding: 0.5rem;
+  align-items: flex-end;
+  
 }
 
 .crossedOut {
-  text-decoration: line-through;
-}
+  color: rgb(115, 173, 28);
+  }
 
 .checkbox {
   width: 18px;
   height: 18px;
-}
+  margin-right: 0.5rem;
+  }
+
+.buttonl {
+  padding: 3px;
+  margin-left: 0.5rem;
+  border: 2px solid rgb(68, 38, 219); 
+  border-radius: 5px;
+  background-color:rgb(201, 201, 244);
+  }
+  
+  
 </style>
