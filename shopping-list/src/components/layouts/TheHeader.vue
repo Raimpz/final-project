@@ -9,5 +9,6 @@ nav {
   width: 100%;
   height: 75px;
   background: beige;
+  margin-bottom: 50px;
 }
 </style>

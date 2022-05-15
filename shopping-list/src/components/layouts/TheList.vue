@@ -31,6 +31,9 @@
       </button>
         <button class="buttonl" @click="deleteShoppingItem">Delete</button>
     </div>
+    <div class="showWarning">
+      <h3 v-if="showWarning === true">Don't forget to input something!</h3>
+    </div>
   </div>
 </template>
 
@@ -58,6 +61,7 @@ export default {
       shoppingItemClass: "crossedOut",
       isBeingEdited: false,
       editedItem: "",
+      showWarning: false,
     };
   },
   methods: {
@@ -86,7 +90,10 @@ export default {
     },
     updateEditedItem() {
       if (this.editedItem === "") {
-        alert("Don't forget to input something!");
+        this.showWarning = true;
+        setTimeout(() => {
+          this.showWarning = false;
+        }, 1000);
       } else {
         this.$emit("update-edited-item", this.editedItem, this.id);
       }
@@ -108,8 +115,10 @@ export default {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px dotted lightgrey;
-    
+  position: relative; 
     }
+  
+
 
 .shopping-item {
   display: flex;
@@ -143,4 +152,12 @@ export default {
   }
   
   
+
+.showWarning {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: -250%;
+  color: red;
+}
 </style>
