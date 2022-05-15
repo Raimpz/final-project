@@ -14,7 +14,7 @@ nav {
 }
 img {
   width:100%;
-  max-width: 500px;
+  max-width: 450px;
   height: 110px;
   image-rendering: auto;
   image-rendering: crisp-edges;
@@ -23,5 +23,6 @@ img {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  object-fit: cover;
 }
 </style>
