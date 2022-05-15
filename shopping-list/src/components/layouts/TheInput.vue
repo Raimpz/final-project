@@ -35,12 +35,38 @@ export default {
 
 <style scoped>
 form {
+  /* background: red; */
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px;
+  height: 40px;
+}
+
+input {
+  width: 100%;
+  height: 100%;
+  /* set padding 
+  font-size
+  */
+}
+
+button {
+  /* 
+  border: none; -> border: 1px solid black
+  font-weight
+  background-color
+  padding: 0 ülevalt-alt, 0 vasakult-paremalt
+  font-size
+  */
+  color: blue;
 }
 
 form div {
   position: absolute;
-  top: -200%;
+  top: -150%;
   width: 100%;
   text-align: center;
 }
