@@ -3,9 +3,15 @@
     <div class="input-container">
       <the-input @submit-item="addNewItem"></the-input>
       <div class="text">
-        <h3 v-if="itemAdded === true">Item added successfully!</h3>
-        <h3 v-if="itemDeleted === true">Item deleted successfully!</h3>
-        <h3 v-if="itemEddited === true">Item eddited successfully!</h3>
+        <h3 v-if="itemAdded === true" class="alert-text">
+          Item added successfully!
+        </h3>
+        <h3 v-if="itemDeleted === true" class="warning-text">
+          Item deleted successfully!
+        </h3>
+        <h3 v-if="itemEddited === true" class="alert-text">
+          Item eddited successfully!
+        </h3>
       </div>
     </div>
     <div>
@@ -118,11 +124,15 @@ export default {
 .text {
   text-align: center;
   position: absolute;
-  top: -200%;
+  top: -100%;
   width: 100%;
 }
 
-.text h3 {
+.alert-text {
   color: green;
+}
+
+.warning-text {
+  color: red;
 }
 </style>

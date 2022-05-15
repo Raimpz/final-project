@@ -9,7 +9,11 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
+<<<<<<< HEAD
     "firebase": "^9.8.1",
+=======
+    "firebase": "^8.10.1",
+>>>>>>> ed32e2c27b1144640a0bb651fe40e1f020f7ca6e
     "vue": "^3.2.13"
   },
   "devDependencies": {

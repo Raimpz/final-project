@@ -19,17 +19,28 @@
           v-if="isBeingEdited === true"
           v-model="editedItem"
           :placeholder="shoppingItem"
+          @keyup.enter="updateEditedItem"
         />
-        <button v-if="isBeingEdited === true" @click="updateEditedItem">
-          Update
-        </button>
       </div>
     </div>
     <div class="todo-buttons">
-      <button @click="editShoppingItem">
+      <button class="buttonl" @click="editShoppingItem">
         {{ isBeingEdited ? "Cancel" : "Edit" }}
       </button>
-      <button @click="deleteShoppingItem">Delete</button>
+      <button
+        class="buttonl"
+        @click="deleteShoppingItem"
+        v-if="isBeingEdited === false"
+      >
+        Delete
+      </button>
+      <button
+        class="buttonl"
+        v-if="isBeingEdited === true"
+        @click="updateEditedItem"
+      >
+        Update
+      </button>
     </div>
     <div class="showWarning">
       <h3 v-if="showWarning === true">Don't forget to input something!</h3>
@@ -67,17 +78,13 @@ export default {
   methods: {
     toggleItemInShoppingCart() {
       this.isOnShopCart = !this.isOnShopCart;
-      console.log(this.id);
-      console.log(this.isOnShoppingCart);
       const newItem = {
         isOnShoppingCart: this.isOnShopCart,
       };
       db.collection("shopping-list")
         .doc(this.id)
         .update(newItem)
-        .then(() => {
-          console.log("Item successfully updated!");
-        })
+        .then(() => {})
         .catch((error) => {
           console.log(error);
         });
@@ -114,6 +121,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1px dotted lightgrey;
   position: relative;
 }
 
@@ -124,22 +132,33 @@ export default {
 
 .todo-buttons {
   display: flex;
+  padding: 0.5rem;
+  align-items: flex-end;
 }
 
 .crossedOut {
-  text-decoration: line-through;
+  color: rgb(115, 173, 28);
 }
 
 .checkbox {
   width: 18px;
   height: 18px;
+  margin-right: 0.5rem;
+}
+
+.buttonl {
+  padding: 3px;
+  margin-left: 0.5rem;
+  border: 2px solid rgb(68, 38, 219);
+  border-radius: 5px;
+  background-color: rgb(201, 201, 244);
 }
 
 .showWarning {
   position: absolute;
   width: 100%;
   text-align: center;
-  top: -250%;
+  top: -100%;
   color: red;
 }
 </style>
