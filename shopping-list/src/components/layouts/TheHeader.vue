@@ -1,19 +1,20 @@
 <template>
   <nav>
-    <img :src="require('../assets/logo/Shopping-list-logo.gif')" 
-    alt="gif">
+    <img :src="require('../assets/logo/Shopping-list-logo.gif')" alt="gif" />
   </nav>
 </template>
 
 <style scoped>
 nav {
-  height:100px;
+  height: 100px;
   width: 100%;
   display: flex;
   align-content: center;
+  margin-bottom: 50px;
 }
+
 img {
-  width:100%;
+  width: 100%;
   max-width: 500px;
   height: 110px;
   image-rendering: auto;
