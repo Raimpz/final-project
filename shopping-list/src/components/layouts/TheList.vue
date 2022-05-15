@@ -117,7 +117,7 @@ export default {
   border-bottom: 1px dotted lightgrey;
   position: relative; 
     }
-  
+ 
 
 
 .shopping-item {
