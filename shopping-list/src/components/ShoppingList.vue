@@ -1,6 +1,13 @@
 <template>
   <article>
-    <the-input @submit-item="addNewItem"></the-input>
+    <div class="input-container">
+      <the-input @submit-item="addNewItem"></the-input>
+      <div class="text">
+        <h3 v-if="itemAdded === true">Item added successfully!</h3>
+        <h3 v-if="itemDeleted === true">Item deleted successfully!</h3>
+        <h3 v-if="itemEddited === true">Item eddited successfully!</h3>
+      </div>
+    </div>
     <div>
       <the-list
         v-for="listItem in shoppingList"
@@ -28,6 +35,9 @@ export default {
   data() {
     return {
       shoppingList: [],
+      itemAdded: false,
+      itemDeleted: false,
+      itemEddited: false,
     };
   },
   methods: {
@@ -39,7 +49,10 @@ export default {
       db.collection("shopping-list")
         .add(newItem)
         .then(() => {
-          // alert("Shopping Item successfully created!");
+          this.itemAdded = true;
+          setTimeout(() => {
+            this.itemAdded = false;
+          }, 1000);
           this.loadItems();
         })
         .catch((error) => {
@@ -51,7 +64,10 @@ export default {
         .doc(ItemID)
         .delete()
         .then(() => {
-          console.log("Item deleted!");
+          this.itemDeleted = true;
+          setTimeout(() => {
+            this.itemDeleted = false;
+          }, 1000);
         })
         .catch((error) => {
           console.error(error);
@@ -66,7 +82,10 @@ export default {
         .doc(ItemID)
         .update(newItem)
         .then(() => {
-          console.log("Item successfully updated!");
+          this.itemEddited = true;
+          setTimeout(() => {
+            this.itemEddited = false;
+          }, 1000);
         })
         .catch((error) => {
           console.log(error);
@@ -91,4 +110,19 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.input-container {
+  position: relative;
+}
+
+.text {
+  text-align: center;
+  position: absolute;
+  top: -200%;
+  width: 100%;
+}
+
+.text h3 {
+  color: green;
+}
+</style>
