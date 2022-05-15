@@ -35,6 +35,6 @@ main {
   height: 100%;
   max-width: 750px;
   margin: 0 auto;
-  padding: 0 25px;
+  padding: 50px 25px;
 }
 </style>

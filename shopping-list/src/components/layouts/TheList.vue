@@ -158,7 +158,7 @@ export default {
   position: absolute;
   width: 100%;
   text-align: center;
-  top: -150%;
+  top: -100%;
   color: red;
 }
 </style>

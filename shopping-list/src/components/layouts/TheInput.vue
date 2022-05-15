@@ -66,7 +66,7 @@ button {
 
 form div {
   position: absolute;
-  top: -150%;
+  top: -100%;
   width: 100%;
   text-align: center;
 }
