@@ -15,7 +15,7 @@ nav {
 img {
   width:100%;
   max-width: 450px;
-  height: 110px;
+  height: 150px;
   image-rendering: auto;
   image-rendering: crisp-edges;
   image-rendering: pixelated;
