@@ -27,7 +27,7 @@ export default {
 }
 
 main {
-  height: calc(100vh - 100px); /* miinus TheHeader.vue kõrgus */
+  height: calc(100vh - 150px); /* miinus TheHeader.vue kõrgus */
   width: 100vw;
 }
 

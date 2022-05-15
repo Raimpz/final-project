@@ -6,16 +6,16 @@
 
 <style scoped>
 nav {
-  height: 100px;
+  height: 150px;
   width: 100%;
   display: flex;
   align-content: center;
 }
 
 img {
-  width:100%;
+  width: 100%;
   max-width: 450px;
-  height: 150px;
+  height: 100%;
   image-rendering: auto;
   image-rendering: crisp-edges;
   image-rendering: pixelated;
