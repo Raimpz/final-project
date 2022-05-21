@@ -6,10 +6,11 @@
 
 <style scoped>
 nav {
-  height: 150px;
+  height: 160px;
   width: 100%;
   display: flex;
   align-content: center;
+  box-shadow: 5px 5px 7px rgba(206, 203, 203, 0.962);
 }
 
 img {
@@ -24,5 +25,6 @@ img {
   margin-left: auto;
   margin-right: auto;
   object-fit: cover;
+  /*box-shadow: 5px 10px inset;*/
 }
 </style>
