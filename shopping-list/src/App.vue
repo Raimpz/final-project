@@ -26,13 +26,11 @@ export default {
   box-sizing: border-box;
 }
 
-main {
-  height: calc(100vh - 150px); /* miinus TheHeader.vue kõrgus */
-  width: 100vw;
+body {
+  background: rgb(244, 252, 255);
 }
 
 .container {
-  height: 100%;
   max-width: 750px;
   margin: 0 auto;
   padding: 50px 25px;

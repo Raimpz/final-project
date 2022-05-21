@@ -10,6 +10,7 @@ nav {
   width: 100%;
   display: flex;
   align-content: center;
+  background: white;
 }
 
 img {
