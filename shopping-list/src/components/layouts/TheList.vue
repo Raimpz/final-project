@@ -123,6 +123,7 @@ export default {
   justify-content: space-between;
   border-bottom: 1px dotted lightgrey;
   position: relative;
+  
 }
 
 .shopping-item {
@@ -152,6 +153,11 @@ export default {
   border: 2px solid rgb(68, 38, 219);
   border-radius: 5px;
   background-color: rgb(201, 201, 244);
+  
+}
+button:hover{
+  cursor: pointer;
+  opacity: 0.5;
 }
 
 .showWarning {
