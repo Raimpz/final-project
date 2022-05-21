@@ -113,5 +113,10 @@ font div {
   width: 100%;
   text-align: center;
 }
+button:hover{
+  opacity: 0.5;
+  cursor: pointer;
+}
+
 
 </style>
