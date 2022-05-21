@@ -10,7 +10,11 @@ nav {
   width: 100%;
   display: flex;
   align-content: center;
+<<<<<<< HEAD
   box-shadow: 5px 5px 7px rgba(206, 203, 203, 0.962);
+=======
+  background: white;
+>>>>>>> 2371a07c9a1cc29e59c316b8a2d8c1ba1761ddd7
 }
 
 img {
