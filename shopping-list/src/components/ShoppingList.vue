@@ -80,7 +80,6 @@ export default {
         });
     },
     editShoppingItem(editedItem, ItemID) {
-      console.log(editedItem);
       const newItem = {
         shoppingItem: editedItem,
       };
